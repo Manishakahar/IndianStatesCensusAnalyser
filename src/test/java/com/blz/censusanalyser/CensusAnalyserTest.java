@@ -54,8 +54,9 @@ public class CensusAnalyserTest {
         }
     }
 
+     //Given Case1 India State code Census CSVFile when Check the correct Record
     @Test
-    public void givenCaseIndiaStateCensusCSVFile_WhenLoad_ShouldReturnCorrectRecord() {
+    public void givenCase1IndiaStateCensusCSVFile_WhenLoad_ShouldReturnCorrectRecord() {
         CensusAnalyser censusAnalyser = new CensusAnalyser();
         try {
             int numOfRecord = censusAnalyser.loadIndiaStateCode(INDIA_STATE_CODE_PATH);
@@ -65,4 +66,37 @@ public class CensusAnalyserTest {
         }
     }
 
+    //  Given  Case2 India State Code Census CSVFile  When incorrect entry count Should Return  custom Exception
+    @Test
+    public void givenCase2IndiaStateCensusCSVFile_WhenLoad_ShouldReturnInCorrectRecord() {
+        CensusAnalyser censusAnalyser = new CensusAnalyser();
+        try {
+            int numOfRecord = censusAnalyser.loadIndiaStateCode(INDIA_STATE_CODE_PATH);
+            Assert.assertEquals(35,numOfRecord);
+        } catch (CensusAnalyserException e) {
+        }
+    }
+    // given Case3 India State Code Census CSV File When incorrect Path Should Return  custom Exception
+    @Test
+    public void givenCase3IndiaStateCensusCSVFile_WhenLoad_ShouldReturnInCorrectRecord() {
+        String path = "C:\\Users\\Dell\\Desktop\\manisha\\DesignPrinciple\\src\\main\\resources\\CensusData.csv.pdf ";
+        CensusAnalyser censusAnalyser = new CensusAnalyser();
+        try {
+            int numOfRecord = censusAnalyser.loadIndiaStateCode(path);
+            Assert.assertEquals(37,numOfRecord);
+        } catch (CensusAnalyserException e) {
+        }
+    }
+
+    // given Case4 India State Code Census CSV File When incorrect delimiter Should Return  custom Exception
+    @Test
+    public void givenCase4IndiaStateCensusCSVFile_WhenLoad_ShouldReturnInCorrectRecord() {
+        String FILEPATH = "C:\\Users\\Dell\\Desktop\\manisha\\DesignPrinciple\\src\\main\\resources\\CensusData.csv.pdf ";
+        CensusAnalyser censusAnalyser = new CensusAnalyser();
+        try {
+            int numOfRecord = censusAnalyser.loadIndiaStateCode(FILEPATH);
+            Assert.assertEquals(37,numOfRecord);
+        } catch (CensusAnalyserException e) {
+        }
+    }
 }
