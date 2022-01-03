@@ -6,6 +6,7 @@ import org.junit.Test;
 public class CensusAnalyserTest {
 
     private static final String INDIA_CENSUS_CSV_PATH = "C:\\Users\\Dell\\Desktop\\manisha\\DesignPrinciple\\src\\main\\resources\\IndiaStateCensusData.csv";
+    private static final String INDIA_STATE_CODE_PATH = "C:\\Users\\Dell\\Desktop\\manisha\\DesignPrinciple\\src\\main\\resources\\IndiaStateCode.csv";
 
      //  Given Case1 India State Census CSV File when Check the correct Record
     @Test
@@ -52,4 +53,16 @@ public class CensusAnalyserTest {
         } catch (CensusAnalyserException e) {
         }
     }
+
+    @Test
+    public void givenCaseIndiaStateCensusCSVFile_WhenLoad_ShouldReturnCorrectRecord() {
+        CensusAnalyser censusAnalyser = new CensusAnalyser();
+        try {
+            int numOfRecord = censusAnalyser.loadIndiaStateCode(INDIA_STATE_CODE_PATH);
+            Assert.assertEquals(37,numOfRecord);
+        } catch (CensusAnalyserException e) {
+
+        }
+    }
+
 }
